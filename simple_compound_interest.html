@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple & Compound Interest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./bootstrap-4.6.0-dist/css/bootstrap.min.css">
+</head>
+<style>
+    *{
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        outline: none;
+        border: none;
+    }
+  </style>
+
+<body class="bg-danger">
+    <div style="text-align: center;" class="mt-5">
+        <button onclick="simple()" class=" btn btn-outline-light shadow-lg"
+            style="width: 20em;height: 8em;font-style: oblique;"> Simple
+            Interest <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+
+
+        </button>
+        <button onclick="compound()" class="btn btn-outline-light shadow-lg"
+            style="width: 20em;height: 8em;font-style:oblique ;">Compound
+            Interest <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button><br><br>
+        <input id="amount" class="rounded px-2" type="number" style="width: 25em;height: 2.2em;"
+            placeholder="Enter gross amount*"><br><br>
+        <input id="interest" class="rounded px-2" type="number" style="width: 25em;height: 2.2em;"
+            placeholder="Enter rate of interest*"><br><br>
+        <input id="year" class="rounded px-2" type="number" style="width: 25em;height: 2.2em;"
+            placeholder="Enter year*"><br><br>
+        <input id="total" class="rounded px-2" type="number" style="width: 25em;height:5em;"
+            placeholder="Amount with interest*" readonly><br><br>
+        <h5 id="h" class="text-light"> </h5>
+    </div>
+
+</body>
+<script>
+    var a, b, c, d,e;
+    var money = 1;
+
+    function simple() {
+        a = document.getElementById("amount").value;
+        b = document.getElementById("interest").value;
+        c = document.getElementById("year").value;
+        d = document.getElementById("total");
+        e= document.getElementById("h");
+        if (a == "" || b == "" || c == "") {
+            e.innerHTML = "Fill all the fields" + ' <i class="fa fa-frown-o" aria-hidden="true"></i>';
+        }
+        else {
+            document.getElementById("h").innerHTML = "";
+            money = (a * b * c) / 100;
+            for(var i=0;i<a;i++)
+            money++;
+            e.innerHTML="Your total amount = "+ money;
+            d.value = money;
+        }
+
+    }
+    function compound() {
+        a = document.getElementById("amount").value;
+        b = document.getElementById("interest").value;
+        c = document.getElementById("year").value;
+        d = document.getElementById("total");
+        e= document.getElementById("h");
+        if (a == "" || b == "" || c == "") {
+           e.innerHTML = "Fill all the fields" + ' <i class="fa fa-frown-o" aria-hidden="true"></i>'
+                ;
+        }
+        else {
+            document.getElementById("h").innerHTML = "";
+            money = a * Math.pow((1 + (b / 100)), c);
+            d.value = money;
+            e.innerHTML="Your total amount = "+ money;
+
+        }
+    }
+</script>
+
+
+
+</html>
